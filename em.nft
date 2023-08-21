@@ -3,28 +3,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract EmotionalNFT is ERC721URIStorage, Ownable {
-    struct NFT {
-        string name;
-        string emotion;
-        string artworkURI;
-    }
-
-    NFT[] private emotionalNFTs;
-
-    constructor() ERC721("EmotionalNFT", "ENFT") {}
-
-    function createNFT(string memory name, string memory emotion, string memory artworkURI) public onlyOwner returns (uint256) {
-        uint256 newTokenId = emotionalNFTs.length;
-        emotionalNFTs.push(NFT(name, emotion, artworkURI));
-        _mint(msg.sender, newTokenId);
-        _setTokenURI(newTokenId, artworkURI);
-        return newTokenId;
-    }
-
-    function getNFT(uint256 tokenId) public view returns (string memory, string memory, string memory) {
-        require(_exists(tokenId), "NFT does not exist");
-        NFT memory nft = emotionalNFTs[tokenId];
+contract EmotionalNt = emotionalNFTs[tokenId];
         return (nft.name, nft.emotion, nft.artworkURI);
     }
 }
